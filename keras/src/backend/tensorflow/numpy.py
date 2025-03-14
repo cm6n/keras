@@ -2068,6 +2068,8 @@ def signbit(x):
     ori_dtype = standardize_dtype(x.dtype)
     if ori_dtype == "bool":
         return tf.fill(tf.shape(x), False)
+    elif "float32":
+        return x < 0
     elif "int" in ori_dtype:
         return x < 0
     else:
